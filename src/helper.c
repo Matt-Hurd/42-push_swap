@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 01:44:23 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/04 16:12:54 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/10 10:56:26 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int		handle_args(int ac, char **av, t_ps *ps)
 		if (x > 11)
 			return (-1);
 		tmp = ft_atol(av[i]);
-		if (tmp > INT_MAX || tmp < -INT_MAX)
+		if (tmp > INT_MAX || tmp < INT_MIN)
 			return (-1);
 		ps->a[ac - 1 - i] = (int)tmp;
 	}
@@ -93,9 +93,15 @@ void	setup_env(t_ps *ps, int ac, char **av)
 {
 	ps->a = ft_memalloc(sizeof(int) * (ac - 1));
 	ps->b = ft_memalloc(sizeof(int) * (ac - 1));
+	ps->ta = ft_memalloc(sizeof(int) * (ac - 1));
+	ps->tb = ft_memalloc(sizeof(int) * (ac - 1));
 	ps->a_len = ac - 1;
 	if (handle_args(ac, av, ps) || check_duplicates(ps))
 	{
+		free(ps->a);
+		free(ps->b);
+		free(ps->ta);
+		free(ps->tb);
 		ft_putstr_fd("Error\n", 2);
 		exit(1);
 	}

@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 03:02:58 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/04 15:32:56 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/10 09:44:07 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,17 @@ int		check_rotates(t_ps *ps)
 	return (ps->a[i] < ps->a[ps->a_len - 1] ? last + 1 : 0);
 }
 
+int		is_stack_sort(int *arr, int len, char rev)
+{
+	int i;
+
+	i = -1;
+	while (++i < len - 1)
+		if ((arr[i] < arr[i + 1]) ^ rev)
+			return (0);
+	return (1);
+}
+
 int		is_sort(t_ps *ps)
 {
 	int i;
@@ -61,4 +72,21 @@ int		is_sort(t_ps *ps)
 		if (ps->a[i] < ps->a[i + 1])
 			return (0);
 	return (1);
+}
+
+int		find_pos(int *arr, int len, int val)
+{
+	int x;
+
+	x = -1;
+	while (++x < len)
+	{
+		if (val < arr[len - 1] && val > arr[0])
+			return (x);
+		else if (val < arr[len - 1] && arr[0] == find_max(arr, len))
+			return (x);
+		else if (val > arr[0] && arr[len - 1] == find_min(arr, len))
+			return (x);
+	}
+	return (-1);
 }

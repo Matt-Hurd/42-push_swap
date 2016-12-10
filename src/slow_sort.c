@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 16:42:46 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/04 17:01:37 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/04 19:50:22 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,36 @@ void	slow_sort(t_ps *ps)
 	while (ps->a_len)
 	{
 		i_min = find_min_i(ps->a, ps->a_len);
-		if (i_min > (1 + ps->a_len / 2))
-			while (i_min++ < ps->a_len)
-				rra(ps, 1);
-		else
-			while (i_min-- > 0)
-				ra(ps, 1);
-		pb(ps, 1);
+		if (i_min == 0)
+			pb(ps, 1);
+		else if (i_min == 1)
+			sa(ps, 1);
+		else if (i_min <= ps->a_len / 2)
+			ra(ps, 1);
+		else if (i_min > ps->a_len / 2)
+			rra(ps, 1);
 	}
 	while (ps->b_len)
 		pa(ps, 1);
+}
+
+void	test_slow_sort(t_ps *ps)
+{
+	int		i_min;
+
+	i_min = 0;
+	while (ps->ta_len)
+	{
+		i_min = find_min_i(ps->ta, ps->ta_len);
+		if (i_min == 0)
+			tpb(ps, 1);
+		else if (i_min == 1)
+			tsa(ps, 1);
+		else if (i_min <= ps->a_len / 2)
+			tra(ps, 1);
+		else if (i_min > ps->a_len / 2)
+			trra(ps, 1);
+	}
+	while (ps->b_len)
+		tpa(ps, 1);
 }

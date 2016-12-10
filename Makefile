@@ -6,7 +6,7 @@
 #    By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/28 19:34:56 by mhurd             #+#    #+#              #
-#    Updated: 2016/12/04 16:44:06 by mhurd            ###   ########.fr        #
+#    Updated: 2016/12/10 11:13:02 by mhurd            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,20 @@ SRC1	=	push_swap.c \
 			rotate.c \
 			rrotate.c \
 			swap.c \
+			tpush.c \
+			trotate.c \
+			trrotate.c \
+			tswap.c \
 			helper.c \
 			check_list.c \
 			simple_sort.c \
 			sort_tools.c \
-			slow_sort.c
+			slow_sort.c \
+			testers.c \
+			sort_tools2.c \
+			merge_sort.c \
+			helper2.c \
+			merge_helpers.c
 
 SRC2	=	checker.c \
 			push.c \
@@ -30,13 +39,19 @@ SRC2	=	checker.c \
 			rrotate.c \
 			swap.c \
 			check_list.c \
-			helper.c
+			sort_tools.c \
+			helper.c \
+			helper2.c
+
+ifdef ALLOCWRAP
+	LDFLAGS += $(HOME)/lib/alloc_wrap.c -ldl
+endif
 
 OBJ1		= $(addprefix $(OBJDIR),$(SRC1:.c=.o))
 OBJ2		= $(addprefix $(OBJDIR),$(SRC2:.c=.o))
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -O3 -funroll-loops -march=native
 
 LIBFT	= ./libft/libft.a
 LIBINC	= -I./libft

@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 03:23:28 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/04 16:21:45 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/05 00:26:17 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ void	only_swaps(t_ps *ps)
 {
 	int		i_swap;
 	int		cpt;
+	int		tmp;
 
 	i_swap = 0;
 	while (i_swap != -1)
 	{
-		i_swap = get_swap(ps);
+		i_swap = get_swap(ps->a, ps->a_len);
 		cpt = i_swap;
 		while (cpt <= ps->a_len / 2 ? cpt-- > 0 : cpt++ < ps->a_len)
 			i_swap <= ps->a_len / 2 ? ra(ps, 1) : rra(ps, 1);
@@ -29,6 +30,11 @@ void	only_swaps(t_ps *ps)
 		cpt = i_swap;
 		while (cpt <= ps->a_len / 2 ? cpt-- > 0 : cpt++ < ps->a_len)
 			i_swap <= ps->a_len / 2 ? rra(ps, 1) : ra(ps, 1);
+		if ((tmp = check_rotates(ps)) != 0)
+		{
+			only_rotate(ps, tmp);
+			break ;
+		}
 	}
 }
 
@@ -79,7 +85,7 @@ void	sort_b(t_ps *ps)
 	}
 }
 
-void	merge_sort(t_ps *ps)
+void	simple_merge_sort(t_ps *ps)
 {
 	int		max;
 	int		min;

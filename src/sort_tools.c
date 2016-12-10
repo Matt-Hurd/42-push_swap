@@ -6,22 +6,22 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 03:24:22 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/04 17:02:19 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/05 00:55:16 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		get_swap(t_ps *ps)
+int		get_swap(int *arr, int len)
 {
 	int		i;
 	int		x;
 
-	i = ps->a_len;
+	i = len;
 	x = 0;
 	while (--i > 0)
 	{
-		if (ps->a[i] > ps->a[i - 1])
+		if (arr[i] > arr[i - 1])
 			return (x);
 		x++;
 	}
