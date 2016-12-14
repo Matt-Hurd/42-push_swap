@@ -6,7 +6,5 @@
 *.out
 *.DS_Store
 *.txt
-*.py
-test*
 checker
 push_swap
