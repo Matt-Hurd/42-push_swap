@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 01:44:23 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/10 10:56:26 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/13 17:11:26 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	setup_env(t_ps *ps, int ac, char **av)
 	ps->ta = ft_memalloc(sizeof(int) * (ac - 1));
 	ps->tb = ft_memalloc(sizeof(int) * (ac - 1));
 	ps->a_len = ac - 1;
+	ps->b_len = 0;
 	if (handle_args(ac, av, ps) || check_duplicates(ps))
 	{
 		free(ps->a);

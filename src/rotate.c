@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 00:58:26 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/10 04:57:55 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/13 17:19:27 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	ra(t_ps *ps, char swap)
 	ps->a[0] = tmp;
 	if (swap)
 	{
-		ft_putstr("ra\n");
+		if (swap == 1)
+			ft_putstr("ra\n");
 		debug_print(ps);
 	}
 }
@@ -55,7 +56,7 @@ void	rr(t_ps *ps, char swap)
 {
 	ra(ps, 0);
 	rb(ps, 0);
-	if (swap)
+	if (swap == 1)
 		ft_putstr("rr\n");
 	debug_print(ps);
 }

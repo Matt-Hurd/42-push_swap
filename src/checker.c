@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 00:43:48 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/10 10:45:44 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/13 17:18:02 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ int		main(int ac, char **av)
 	char	*line;
 
 	setup_env(&ps, ac, av);
-	while (ft_get_next_line(1, &line) > 0)
+	while (ft_get_next_line(0, &line) > 0)
 	{
+		if (ft_strequ(line, ""))
+			break ;
 		if (handle_instruction(&ps, line))
 		{
 			free(line);

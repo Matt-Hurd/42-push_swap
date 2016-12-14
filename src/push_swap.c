@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 00:43:19 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/10 11:25:17 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/13 17:29:37 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ void	do_swaps(t_ps *ps, t_sort *min, int tmp)
 {
 	if (min->type == 0)
 		simple_merge_sort(ps);
+	else if (ps->a_len == 5)
+		simple_merge_sort(ps);
 	else if (min->type == 1)
 		only_rotate(ps, tmp);
 	else if (min->type == 2)
 		only_swaps(ps);
-	else if (ps->a_len == 5)
-		simple_merge_sort(ps);
 	else
 		merge_sort(ps);
 }
