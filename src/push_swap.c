@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 00:43:19 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/28 07:39:33 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/28 09:14:03 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		main(int ac, char **av)
 	if (is_sort(&ps))
 	{
 		close_env(&ps);
-		return (1);
+		return (0);
 	}
 	run_tests(&ps, &tmp);
 	lst = ps.sorts;
