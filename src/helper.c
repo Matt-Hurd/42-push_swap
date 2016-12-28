@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 01:44:23 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/28 08:20:03 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/28 09:05:36 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,11 @@ void	setup_env(t_ps *ps, int ac, char **av)
 	ps->a_len = ac - 1;
 	ps->b_len = 0;
 	ps->len = 0;
+	ps->debug = 0;
+	ps->color = 0;
+	ps->printsort = 0;
+	ps->printlen = 0;
+	ps->printslow = 0;
 	if (handle_args(ac, av, ps) || check_duplicates(ps))
 	{
 		free(ps->a);

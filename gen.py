@@ -20,7 +20,7 @@ while 1:
 	if lines < mi:
 		mi = lines
 	# print "avg: " + str(t / c) + " prev: " + str(lines) + " max: " + str(m) + " min: " + str(mi)
-	output = subprocess.check_output("echo \"%s\"" % (output) + "| ./checker " + s, shell=True)
+	output = subprocess.check_output("echo \"%s\"" % (output) + " | ./checker " + s, shell=True)
 	if output != "OK\n":
 		print '\nit failed\n'
 	sys.stdout.write("\ravg: " + str(t / c) + " prev: " + str(lines) + " max: " + str(m) + " min: " + str(mi))
