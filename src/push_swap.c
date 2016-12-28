@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 00:43:19 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/13 17:29:37 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/28 07:39:33 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,29 @@ void	run_tests(t_ps *ps, int *tmp)
 
 void	do_swaps(t_ps *ps, t_sort *min, int tmp)
 {
-	if (min->type == 0)
+	if (min->type == 0 || ps->a_len == 5)
+	{
 		simple_merge_sort(ps);
-	else if (ps->a_len == 5)
-		simple_merge_sort(ps);
+		ft_putstr(ps->printsort ? "Sort Used: Simple Sort\n" : "");
+	}
 	else if (min->type == 1)
+	{
 		only_rotate(ps, tmp);
+		ft_putstr(ps->printsort ? "Sort Used: Only Rotates\n" : "");
+	}
 	else if (min->type == 2)
+	{
 		only_swaps(ps);
+		ft_putstr(ps->printsort ? "Sort Used: Only Swaps\n" : "");
+	}
 	else
+	{
 		merge_sort(ps);
+		ft_putstr(ps->printsort ? "Sort Used: Merge Sort\n" : "");
+	}
+	ft_putstr(ps->printlen ? "Operation Count: " : "");
+	ps->printlen ? ft_putnbr(ps->len) : ft_putstr("");
+	ft_putstr(ps->printlen ? "\n" : "");
 }
 
 int		main(int ac, char **av)

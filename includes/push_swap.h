@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 00:39:20 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/10 11:20:49 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/28 08:06:34 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 # define BLUE "\033[0;34m"
 # define NC "\033[0m"
 # define ABS(x) ((x) < 0 ? (-x) : (x))
-
-#include <stdio.h>
-
 
 enum			e_sort
 {
@@ -52,6 +49,11 @@ typedef struct	s_ps
 	int		t_len;
 	t_list	*sorts;
 	char	debug : 1;
+	char	color : 1;
+	char	printsort : 1;
+	char	printlen : 1;
+	char	printslow : 1;
+	int		len;
 }				t_ps;
 
 void			setup_env(t_ps *ps, int ac, char **av);

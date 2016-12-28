@@ -8,18 +8,22 @@ c = 0
 m = -10000
 mi = 10000000
 while 1:
-	l = range(100)
+	l = range(50)
 	c += 1
 	shuffle(l)
 	s = " ".join([str(x) for x in l])
-	output = subprocess.check_output("./push_swap " + s + " | wc -l", shell=True)
-	t += int(output)
-	if int(output) > m:
-		m = int(output)
-	if int(output) < mi:
-		mi = int(output)
-	# print "avg: " + str(t / c) + " prev: " + str(int(output)) + " max: " + str(m) + " min: " + str(mi)
-	sys.stdout.write("\ravg: " + str(t / c) + " prev: " + str(int(output)) + " max: " + str(m) + " min: " + str(mi))
+	output = subprocess.check_output("./push_swap " + s, shell=True)
+	lines = len(output.split("\n"))
+	t += lines
+	if lines > m:
+		m = lines
+	if lines < mi:
+		mi = lines
+	# print "avg: " + str(t / c) + " prev: " + str(lines) + " max: " + str(m) + " min: " + str(mi)
+	output = subprocess.check_output("echo \"%s\"" % (output) + "| ./checker " + s, shell=True)
+	if output != "OK\n":
+		print '\nit failed\n'
+	sys.stdout.write("\ravg: " + str(t / c) + " prev: " + str(lines) + " max: " + str(m) + " min: " + str(mi))
 
 
 # l = range(100)

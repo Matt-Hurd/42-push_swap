@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 01:03:04 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/13 17:19:06 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/28 07:36:48 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	rra(t_ps *ps, char swap)
 	ps->a[ps->a_len - 1] = tmp;
 	if (swap)
 	{
+		ps->len++;
 		if (swap == 1)
 			ft_putstr("rra\n");
 		debug_print(ps);
@@ -46,6 +47,7 @@ void	rrb(t_ps *ps, char swap)
 	ps->b[ps->b_len - 1] = tmp;
 	if (swap)
 	{
+		ps->len++;
 		if (swap == 1)
 			ft_putstr("rrb\n");
 		debug_print(ps);
@@ -57,6 +59,9 @@ void	rrr(t_ps *ps, char swap)
 	rra(ps, 0);
 	rrb(ps, 0);
 	if (swap == 1)
+	{
+		ps->len++;
 		ft_putstr("rrr\n");
+	}
 	debug_print(ps);
 }

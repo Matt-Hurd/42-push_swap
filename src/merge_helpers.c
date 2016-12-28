@@ -6,11 +6,23 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:12:47 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/10 11:19:52 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/28 07:22:03 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+**	len[0]: pos in stack a
+**	len[1]: pos in stack b
+**	len[2]: type of movement to do
+**		0: rr
+**		1: rrr
+**		2: ra, rrb
+**		3: rra, rb
+**	len[3]: unused (whoops)
+**	len[4]: Total moves
+*/
 
 void	set_len_vals(t_ps *ps, int *len, int y)
 {
@@ -28,6 +40,7 @@ void	set_len_vals(t_ps *ps, int *len, int y)
 	}
 	if (MAX(ps->a_len - len[0], ps->b_len - len[1]) < len[4])
 	{
+		len[4] = MAX(ps->a_len - len[0], ps->b_len - len[1]);
 		len[2] = 1;
 		len[0] = ps->a_len - len[0];
 		len[1] = ps->b_len - len[1];
