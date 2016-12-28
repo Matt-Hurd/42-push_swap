@@ -2,20 +2,18 @@ from random import shuffle
 import os
 import subprocess
 import sys
-import itertools
 
 n = 0
 t = 0
 c = 0
 m = -10000
 mi = 10000000
-# while c < 100:
-z = range(5)
-a = itertools.permutations(z)
-for l in a:
+while 1:
+	# while c < 100:
+	l = range(500)
 	c += 1
+	shuffle(l)
 	s = " ".join([str(x) for x in l])
-	# print s
 	output = subprocess.check_output("./push_swap " + s, shell=True)
 	lines = len(output.split("\n"))
 	t += lines
