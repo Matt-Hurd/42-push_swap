@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 03:02:58 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/10 09:44:07 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/28 10:18:43 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ int		check_rotates(t_ps *ps)
 {
 	int		i;
 	int		last;
-
 	i = ps->a_len;
 	last = 0;
-	while (--i > 0)
+	while (--i >= 0)
 	{
 		if (ps->a[i] > ps->a[i - 1])
 		{
@@ -41,13 +40,15 @@ int		check_rotates(t_ps *ps)
 		}
 		last++;
 	}
-	while (i > 0)
+	while (i != ps->a_len - 1 - last)
 	{
-		if (ps->a[i] > ps->a[ps->a_len - 1] || ps->a[i] > ps->a[i - 1])
+		if (ps->a[i] > ps->a[i - 1] || (i == 0 && ps->a[0] >= ps->a[ps->a_len - 1]))
 			return (0);
 		i--;
+		if (i < 0)
+			i = ps->a_len;
 	}
-	return (ps->a[i] < ps->a[ps->a_len - 1] ? last + 1 : 0);
+	return (ps->a[i] <= ps->a[ps->a_len - 1] ? last + 1 : 0);
 }
 
 int		is_stack_sort(int *arr, int len, char rev)

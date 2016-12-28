@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 00:12:07 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/28 06:48:58 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/28 10:17:49 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	merge_sort(t_ps *ps)
 {
 	int x;
 
-	sort_big_a_on_b(ps, 0, 0, 0);
+	sort_big_a_on_b(ps, 2, 0, 0);
 	sort_a_on_b(ps, 2);
 	merge_b_to_a(ps);
 	x = find_max_i(ps->a, ps->a_len) + 1;

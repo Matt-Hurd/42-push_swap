@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 00:43:19 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/28 09:14:03 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/28 10:21:29 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	cleanup_test(t_ps *ps)
 
 void	run_tests(t_ps *ps, int *tmp)
 {
+	(void)tmp;
 	if ((*tmp = check_rotates(ps)) != 0)
 	{
 		setup_test(ps, ROTATE);
@@ -42,7 +43,7 @@ void	run_tests(t_ps *ps, int *tmp)
 	}
 	if (check_swaps(ps) == 1)
 	{
-		setup_test(ps, ROTATE);
+		setup_test(ps, SWAP);
 		test_only_swaps(ps);
 		cleanup_test(ps);
 	}
@@ -59,12 +60,12 @@ void	run_tests(t_ps *ps, int *tmp)
 
 void	do_swaps(t_ps *ps, t_sort *min, int tmp)
 {
-	if (min->type == 0 || ps->a_len == 5)
+	if (min->type == 0 && ps->a_len <= 5)
 	{
 		simple_merge_sort(ps);
 		ft_putstr(ps->printsort ? "Sort Used: Simple Sort\n" : "");
 	}
-	else if (min->type == 1)
+	else if (min->type == 1 && ps->a_len == 5)
 	{
 		only_rotate(ps, tmp);
 		ft_putstr(ps->printsort ? "Sort Used: Only Rotates\n" : "");
@@ -84,6 +85,7 @@ void	do_swaps(t_ps *ps, t_sort *min, int tmp)
 	ft_putstr(ps->printlen ? "\n" : "");
 }
 
+
 int		main(int ac, char **av)
 {
 	t_ps	ps;
@@ -102,7 +104,7 @@ int		main(int ac, char **av)
 	min = lst->content;
 	while (lst)
 	{
-		if (min->len > ((t_sort *)lst->content)->len)
+		if (min->len > 0 && min->len > ((t_sort *)lst->content)->len)
 			min = ((t_sort *)lst->content);
 		lst = lst->next;
 	}

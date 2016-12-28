@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:12:47 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/28 07:22:03 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/28 10:19:05 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	sort_big_a_on_b(t_ps *ps, int len, int x, int *tmp)
 	int *best;
 
 	best = 0;
-	len = (ps->a_len > 200) ? 57 : 1;
-	while (ps->a_len > len)
+	len = (ps->a_len > 200) ? 57 : len;
+	while (ps->a_len > len && !(check_rotates(ps) || is_stack_sort(ps->a, ps->a_len, 0)))
 	{
 		x = -1;
 		while (++x < ps->a_len)
