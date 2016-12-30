@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:12:47 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/28 10:19:05 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/29 22:56:01 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 **	len[4]: Total moves
 */
 
-void	set_len_vals(t_ps *ps, int *len, int y)
+void			set_len_vals(t_ps *ps, int *len, int y)
 {
 	len[1] = ps->b_len - y - 1;
 	len[4] = MAX(len[0], len[1]);
@@ -47,7 +47,7 @@ void	set_len_vals(t_ps *ps, int *len, int y)
 	}
 }
 
-void	rotate_individuals(t_ps *ps, int *len)
+void			rotate_individuals(t_ps *ps, int *len)
 {
 	if (len[2] == 2)
 	{
@@ -66,13 +66,19 @@ void	rotate_individuals(t_ps *ps, int *len)
 	return ;
 }
 
-void	sort_big_a_on_b(t_ps *ps, int len, int x, int *tmp)
+static void		setup_sort(int *best, int *len, t_ps *ps)
+{
+	*best = 0;
+	*len = (ps->a_len > 200) ? 57 : *len;
+}
+
+void			sort_big_a_on_b(t_ps *ps, int len, int x, int *tmp)
 {
 	int *best;
 
-	best = 0;
-	len = (ps->a_len > 200) ? 57 : len;
-	while (ps->a_len > len && !(check_rotates(ps) || is_stack_sort(ps->a, ps->a_len, 0)))
+	setup_sort(&best, &len, ps);
+	while (ps->a_len > len && !(check_rotates(ps)
+		|| is_stack_sort(ps->a, ps->a_len, 0)))
 	{
 		x = -1;
 		while (++x < ps->a_len)

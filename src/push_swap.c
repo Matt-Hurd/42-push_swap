@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 00:43:19 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/28 10:49:44 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/29 22:53:41 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	do_swaps(t_ps *ps, t_sort *min, int tmp)
 	ps->printlen ? ft_putnbr(ps->len) : ft_putstr("");
 	ft_putstr(ps->printlen ? "\n" : "");
 }
-
 
 int		main(int ac, char **av)
 {

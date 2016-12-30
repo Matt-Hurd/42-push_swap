@@ -10,7 +10,7 @@ m = -10000
 mi = 10000000
 while 1:
 	# while c < 100:
-	l = range(500)
+	l = range(10)
 	c += 1
 	shuffle(l)
 	s = " ".join([str(x) for x in l])
