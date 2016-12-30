@@ -2,18 +2,20 @@ from random import shuffle
 import os
 import subprocess
 import sys
+import itertools
 
 n = 0
 t = 0
 c = 0
 m = -10000
 mi = 10000000
-while 1:
-	# while c < 100:
-	l = range(10)
+# while c < 100:
+z = range(6)
+a = itertools.permutations(z)
+for l in a:
 	c += 1
-	shuffle(l)
 	s = " ".join([str(x) for x in l])
+	# print s
 	output = subprocess.check_output("./push_swap " + s, shell=True)
 	lines = len(output.split("\n"))
 	t += lines
@@ -24,6 +26,8 @@ while 1:
 	output = subprocess.check_output("echo \"%s\"" % (output) + " | ./checker " + s, shell=True)
 	if output != "OK\n":
 		print '\nit failed for %s\n' % s
+	if lines > 100:
+		print "\n%s\n" % s
 	# if lines == 14:
 	# 	print '\ntoo long for %s\n' % s
 	# print str(n) +": avg: " + str(t / c) + " prev: " + str(lines) + " max: " + str(m) + " min: " + str(mi)

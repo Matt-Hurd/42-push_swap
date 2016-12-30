@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 00:43:19 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/29 22:53:41 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/29 23:06:18 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	run_tests(t_ps *ps, int *tmp)
 		test_only_rotate(ps, *tmp);
 		cleanup_test(ps);
 	}
-	if (check_swaps(ps) == 1)
+	if (check_swaps(ps) == 1 && ps->a_len <= 5)
 	{
 		setup_test(ps, SWAP);
 		test_only_swaps(ps);
