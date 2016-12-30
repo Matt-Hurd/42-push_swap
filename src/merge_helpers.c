@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:12:47 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/29 22:56:01 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/29 22:58:34 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void			rotate_individuals(t_ps *ps, int *len)
 	return ;
 }
 
-static void		setup_sort(int *best, int *len, t_ps *ps)
+static void		setup_sort(int **best, int *len, t_ps *ps)
 {
 	*best = 0;
 	*len = (ps->a_len > 200) ? 57 : *len;
