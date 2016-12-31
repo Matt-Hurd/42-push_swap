@@ -124,13 +124,14 @@ void	setup_env(t_ps *ps, int ac, char **av)
 	ps->printsort = 0;
 	ps->printlen = 0;
 	ps->printslow = 0;
-	if (handle_args(ac, av, ps) || check_duplicates(ps))
+	if (handle_args(ac, av, ps) || check_duplicates(ps) || ps->a_len == 0)
 	{
 		free(ps->a);
 		free(ps->b);
 		free(ps->ta);
 		free(ps->tb);
-		ft_putstr_fd("Error\n", 2);
+		if (!ps->a_len == 0)
+			ft_putstr_fd("Error\n", 2);
 		exit(1);
 	}
 }
