@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 01:44:23 by mhurd             #+#    #+#             */
-/*   Updated: 2016/12/29 21:57:30 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/12/30 21:48:59 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	setup_env(t_ps *ps, int ac, char **av)
 		free(ps->b);
 		free(ps->ta);
 		free(ps->tb);
-		if (!ps->a_len == 0)
+		if (ps->a_len != 0)
 			ft_putstr_fd("Error\n", 2);
 		exit(1);
 	}
